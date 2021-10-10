@@ -1,10 +1,12 @@
 import React from 'react';
 
-const Header = () => {
+import './header.scss';
+
+const Header = ({text, settingsButton, kind}) => {
     return (
         <div className="header">
-            <p>School CI Server</p>
-            <button>Settings</button>
+            <p className={kind}>{text}</p>
+            {settingsButton}
         </div>
     )
 }

@@ -1,3 +1,76 @@
-body {
-    color: red;
+@import url('./clear.scss');
+@font-face{
+    font-family:'YS Text';font-weight:400;font-style:normal;font-stretch:normal;src:url(//yastatic.net/s3/home/fonts/ys/1/text-regular.woff2) format('woff2'),url(//yastatic.net/s3/home/fonts/ys/1/text-regular.woff) format('woff')}@font-face{font-family:'YS Text';font-weight:500;font-style:normal;font-stretch:normal;src:url(//yastatic.net/s3/home/fonts/ys/1/text-medium.woff2) format('woff2'),url(//yastatic.net/s3/home/fonts/ys/1/text-medium.woff) format('woff')}@font-face{font-family:'YS Text';font-weight:700;font-style:normal;font-stretch:normal;src:url(//yastatic.net/s3/home/fonts/ys/1/text-bold.woff2) format('woff2'),url(//yastatic.net/s3/home/fonts/ys/1/text-bold.woff) format('woff')}.font_loaded body{font-family:'YS Text','Helvetica Neue',Arial,sans-serif;-webkit-font-feature-settings:'liga','kern';-moz-font-feature-settings:'liga','kern';font-feature-settings:'liga','kern'
+}
+:root {
+    --color-text-gray: #7F8285;
+    --color-bg-gray-control: #E6E6E6;
+    --color-bg-gray-control-hovered: #DBDBDB;
+    --color-bg-action: #FFCC00; 
+    --mobile-breakpoint: 992px;
+}
+
+html, body {
+    height: 100%;
+}
+
+#root {
+    font-family: 'YS Text';
+    display: flex;
+    flex-direction: column;
+    height: 100%;   
+}
+
+.header{
+    flex: 0 0 auto;
+    height: 48px;
+
+    .building-buttons {
+        display: flex;
+        button {
+            margin-right: 8px;
+            &:last-child {
+                width: 28px;
+                height: 28px;
+            }
+        }
+    }
+    
+}
+
+.main-content{
+    flex: 1 0 auto;
+    display: flex;
+    &.centered {
+        margin: 0 auto;
+        align-items: center;
+    }
+}
+
+.footer{
+    flex: 0 0 auto;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.button-yellow {
+    background-color: var(--color-bg-action);
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+@media screen and (max-width: 800px) {
+    .footer {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding-top: 15px;
+    }
 }

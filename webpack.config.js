@@ -3,7 +3,6 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     mode: "development",
-
     module: {
         rules:[
             {
@@ -49,6 +48,7 @@ module.exports = {
     ], 
 
     devServer:{
-        open:true
+        open:true,
+        historyApiFallback: true,
     }
 };  
