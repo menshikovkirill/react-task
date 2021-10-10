@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './commits-list.scss';
 
 import format from 'date-fns/format';
@@ -24,8 +24,22 @@ const Commit = ({props}) =>
     </div>
 
 const CommitsList = ({commits}) => {
-    const ItemList = <div className="commits-list">{commits.map((elem, index) => <Commit key={index} props={elem} />)}</div>
-    return ItemList;
+    const [isDisplayAll, setDisplayingAll] = useState(false);
+    const [commistList, setCommitsList] = useState(commits);
+
+    useEffect(() => {
+        if (!isDisplayAll) {
+            setCommitsList(commits.slice(0, 7));
+        } else {
+            setCommitsList(commits);
+        }
+        console.log("here")
+    }, [isDisplayAll])
+
+    return <div className="commits-list">
+        {commistList.map((elem, index) => <Commit key={index} props={elem} />)}
+        <div className="button-show"><button className="button-grey" onClick={() => setDisplayingAll(!isDisplayAll)}>{!isDisplayAll ? "Show more" : "Hide part"}</button></div>
+    </div>;
 }
 
 export default CommitsList;

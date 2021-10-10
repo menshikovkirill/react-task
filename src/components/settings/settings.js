@@ -9,9 +9,11 @@ const Settings = ({setData}) => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [disabledButton, setDisabled] = useState(false);
     const [redirect, setRedirect] = useState(false);
+    const [err, setError] = useState(false);
 
     async function onSubmit(data) {
         setDisabled(true);
+        setError(false);
 
         //function of connection to repository
         await new Promise((res, rej) => {
@@ -98,15 +100,92 @@ const Settings = ({setData}) => {
                         uploadTime: 240,
                         dateTime: new Date()
                     },
+                    {
+                        number: "#4343", 
+                        description: "add documentation for postgres scaler",
+                        branch: "master",
+                        author: "Philip Kirkorov",
+                        status: "success",
+                        hash: "9c9f0b9", 
+                        uploadTime: 240,
+                        dateTime: new Date()
+                    },
+                    {
+                        number: "#3123", 
+                        description: "remove info",
+                        branch: "master",
+                        author: "Menshikov Kirkorov",
+                        status: "error",
+                        hash: "9c9f0b9", 
+                        uploadTime: 240,
+                        dateTime: new Date()
+                    },
+                    {
+                        number: "#4343", 
+                        description: "add documentation for postgres scaler",
+                        branch: "master",
+                        author: "Philip Kirkorov",
+                        status: "success",
+                        hash: "9c9f0b9", 
+                        uploadTime: 240,
+                        dateTime: new Date()
+                    },
+                    {
+                        number: "#4343", 
+                        description: "add documentation for postgres scaler",
+                        branch: "master",
+                        author: "Philip Kirkorov",
+                        status: "success",
+                        hash: "9c9f0b9", 
+                        uploadTime: 240,
+                        dateTime: new Date()
+                    },
+                    {
+                        number: "#4343", 
+                        description: "add documentation for postgres scaler",
+                        branch: "master",
+                        author: "Philip Kirkorov",
+                        status: "success",
+                        hash: "9c9f0b9", 
+                        uploadTime: 240,
+                        dateTime: new Date()
+                    },
+                    {
+                        number: "#4343", 
+                        description: "add documentation for postgres scaler",
+                        branch: "master",
+                        author: "Philip Kirkorov",
+                        status: "success",
+                        hash: "9c9f0b9", 
+                        uploadTime: 240,
+                        dateTime: new Date()
+                    },
+                    {
+                        number: "#4343", 
+                        description: "add documentation for postgres scaler",
+                        branch: "master",
+                        author: "Philip Kirkorov",
+                        status: "success",
+                        hash: "9c9f0b9", 
+                        uploadTime: 240,
+                        dateTime: new Date()
+                    },
                 ]
             }
-            setTimeout(() => res(repositoryData), 1000)
+            setTimeout(() => {
+                if(new Date().getSeconds() % 2 === 0)
+                    res(repositoryData);
+                else 
+                    rej("err");
+            }, 1000)
         }).then(res => {
             setData(res);
+            setRedirect(true);
+        }, err => {
+            setError(true);
         });
 
         setDisabled(false);
-        setRedirect(true);
     }
 
     return (
@@ -156,6 +235,7 @@ const Settings = ({setData}) => {
                         <button onClick={() => setRedirect(true)} className="button-gray" disabled={disabledButton}>{!disabledButton ? <Link to="/">Cancel</Link>: "Cancel"}</button>
                     </div>
                 </form>
+                <p className={!err ? "hidden" : "error" }>Error with connection to repository. Check your data</p>
             </div>
         </div>
     )

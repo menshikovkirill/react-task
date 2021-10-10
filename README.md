@@ -5,3 +5,5 @@
 
 npm install 
 npm run start
+
+Ошибка при сохранении ошибки появляется, если new Date().getSeconds() % 2 === 0

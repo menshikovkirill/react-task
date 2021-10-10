@@ -29,6 +29,13 @@
         border-radius: 4px;
     }
 
+    p.error {
+        color: red;
+    }
+    p.hidden {
+        display: none;
+    }
+
     form {
         display: flex;
         flex-direction: column;
